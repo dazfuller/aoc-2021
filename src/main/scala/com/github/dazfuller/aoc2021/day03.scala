@@ -40,7 +40,7 @@ object day03 extends Solution {
 
     0.until(width)
       .map(i => values.map(l => l(i)))
-      .map(l => l.groupMapReduce(identity)(_ => 1)(_+_).maxBy(i => i._2 + i._1)._1)
+      .map(l => l.groupMapReduce(identity)(_ => 1)(_ + _).maxBy(i => i._2 + i._1)._1)
   }
 
   def getLeastCommonBitsPerColumn(values: Seq[Array[Int]]): Seq[Int] = {
@@ -48,6 +48,6 @@ object day03 extends Solution {
 
     0.until(width)
       .map(i => values.map(l => l(i)))
-      .map(l => l.groupMapReduce(identity)(_ => 1)(_+_).toList.sortBy(_._2).minBy(_._2)._1)
+      .map(l => l.groupMapReduce(identity)(_ => 1)(_ + _).toList.sortBy(_._2).minBy(_._2)._1)
   }
 }
