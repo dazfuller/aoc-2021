@@ -5,7 +5,8 @@ object main {
     val solutions = List[Solution](
       day01,
       day02,
-      day03
+      day03,
+      day04
     )
 
     solutions.foreach(s => s.solve(isTest = false))
