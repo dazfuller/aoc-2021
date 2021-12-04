@@ -7,5 +7,6 @@ lazy val root = (project in file("."))
     name := "aoc-2021",
     organization := "com.github.dazfuller",
     description := "Solutions for the 2021 Advent of Code",
-    homepage := Some(url("https://github.com/dazfuller"))
+    homepage := Some(url("https://github.com/dazfuller")),
+    assembly / mainClass := Some("com.github.dazfuller.aoc2021.main")
   )
