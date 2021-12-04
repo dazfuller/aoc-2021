@@ -24,8 +24,8 @@ object day04 extends Solution {
     val losingBoard = boards.maxBy(b => b.rank)
 
     println("==== Day 04 ====")
-    println(s"Final score for winning board (Part 1): ${winningBoard.unmarkedTotal * winningBoard.winningDrawNumber}")
-    println(s"Final score for losing board (Part 2): ${losingBoard.unmarkedTotal * losingBoard.winningDrawNumber}")
+    println(s"Final score for winning board (Part 1): ${winningBoard.score}")
+    println(s"Final score for losing board (Part 2): ${losingBoard.score}")
   }
 }
 
@@ -42,7 +42,7 @@ class Board(boardSetup: Seq[String], var winningDrawNumber: Int = 0, var rank: I
   def markValue(value: Int): Unit = {
     board.foreach(line => {
       for ((v, y) <- line.view.zipWithIndex) {
-        if (line(y)._1 == value) line(y) = (line(y)._1, true)
+        if (v._1 == value) line(y) = (v._1, true)
       }
     })
     isSolved = checkIfSolved
@@ -52,12 +52,17 @@ class Board(boardSetup: Seq[String], var winningDrawNumber: Int = 0, var rank: I
     if (board.exists(l => l.forall(_._2 == true))) {
       true
     } else {
-      val boardColumns = 0.until(5).map(y => 0.until(5).map(x => board(x)(y)))
-      boardColumns.exists(l => l.forall(_._2 == true))
+      0.until(5)
+        .map(y => 0.until(5).map(x => board(x)(y)))
+        .exists(l => l.forall(_._2 == true))
     }
   }
 
   def unmarkedTotal: Int = {
     board.map(l => l.filter(_._2 == false).map(_._1).sum).sum
+  }
+
+  def score: Int = {
+    unmarkedTotal * winningDrawNumber
   }
 }
