@@ -6,7 +6,8 @@ object main {
       day01,
       day02,
       day03,
-      day04
+      day04,
+      day05
     )
 
     solutions.foreach(s => s.solve(isTest = false))
